@@ -1,4 +1,6 @@
-package BankAccountWithOOP;
+package BankAccountWithJavaCollectionsAndPackages;
+
+import BankAccountWithOOP.BankAccount;
 
 public class SavingsAccount extends BankAccount {
 
