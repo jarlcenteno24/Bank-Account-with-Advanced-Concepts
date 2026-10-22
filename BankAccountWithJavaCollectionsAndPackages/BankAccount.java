@@ -2,27 +2,39 @@ package BankAccountWithOOP;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BankAccount {
   private double balance;
   private boolean isFrozen;
+  private String ownerName;
+
+  List<Transaction> transactionHistory;
 
   BankAccount() {
-    balance = 0;
-    isFrozen = false;
+    this("Unknown");
   }
 
-  // Round to 2 decimal places using BigDecimal to avoid the binary floating-point
-  // errors that Math.round(amount * 100.0) / 100.0 suffers from (e.g. 1.005 -> 1.00,
-  // 2.675 -> 2.67, 0.565 -> 0.56). BigDecimal.valueOf uses the decimal string form of
-  // the amount, so HALF_UP rounding matches real-world monetary expectations
-  // (e.g. 1.005 -> 1.01, 1000.125 -> 1000.13).
+  BankAccount(String ownerName) {
+    this.ownerName = ownerName;
+    balance = 0;
+    isFrozen = false;
+    transactionHistory = new ArrayList<>();
+  }
+
+  String getOwnerName() {
+    return ownerName;
+  }
+
   private static double roundToTwoDecimals(double amount) {
     return BigDecimal.valueOf(amount).setScale(2, RoundingMode.HALF_UP).doubleValue();
   }
 
   void deposit(double amount) {
     double roundedAmount = roundToTwoDecimals(amount);
+    transactionHistory.add(new Transaction("Deposit", amount));
+
     if (isFrozen) {
       System.out.println("Account is FROZEN. Unable to transact.");
       return;
@@ -38,6 +50,7 @@ public class BankAccount {
 
   void withdraw(double amount) {
     double roundedAmount = roundToTwoDecimals(amount);
+    transactionHistory.add(new Transaction("Withdraw", amount));
     if (isFrozen) {
       System.out.println("Account is FROZEN. Unable to transact.");
       return;
@@ -69,5 +82,9 @@ public class BankAccount {
 
   boolean isFrozen() {
     return isFrozen;
+  }
+
+  List<Transaction> getTransactionHistory() {
+    return transactionHistory;
   }
 }

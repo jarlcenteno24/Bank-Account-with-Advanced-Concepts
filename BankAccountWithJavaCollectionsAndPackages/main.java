@@ -1,4 +1,4 @@
-package BankAccountWithOOP;
+package BankAccountWithJavaCollectionsAndPackages;
 
 public class main {
   public static void main(String[] args) {
