@@ -1,5 +1,7 @@
 package BankAccountWithJavaCollectionsAndPackages;
 
+import BankAccountWithOOP.BankAccount;
+
 public class main {
    public main() {
    }
@@ -13,8 +15,8 @@ public class main {
       System.out.println(var1.getTransactionHistory());
       System.out.println();
       BankAccountManager var2 = new BankAccountManager();
-      var2.addAccount(var1);
-      var2.addAccount(new SavingsAccount("Test1"));
+      var2.addAccount(new BankAccount("Test0"));
+      var2.addAccount(new BankAccount("Test1"));
       System.out.println();
       var2.listAccounts();
    }
