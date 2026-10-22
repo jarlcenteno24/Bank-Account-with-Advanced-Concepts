@@ -10,20 +10,20 @@ public class BankAccount {
   private boolean isFrozen;
   private String ownerName;
 
-  List<Transaction> transactionHistory;
+  private List<Transaction> transactionHistory;
 
-  BankAccount() {
+  public BankAccount() {
     this("Unknown");
   }
 
-  BankAccount(String ownerName) {
+  public BankAccount(String ownerName) {
     this.ownerName = ownerName;
     balance = 0;
     isFrozen = false;
     transactionHistory = new ArrayList<>();
   }
 
-  String getOwnerName() {
+  public String getOwnerName() {
     return ownerName;
   }
 
@@ -31,7 +31,7 @@ public class BankAccount {
     return BigDecimal.valueOf(amount).setScale(2, RoundingMode.HALF_UP).doubleValue();
   }
 
-  void deposit(double amount) {
+  public void deposit(double amount) {
     double roundedAmount = roundToTwoDecimals(amount);
     transactionHistory.add(new Transaction("Deposit", amount));
 
@@ -48,7 +48,7 @@ public class BankAccount {
     System.out.println("Current balance: " + balance);
   }
 
-  void withdraw(double amount) {
+  public void withdraw(double amount) {
     double roundedAmount = roundToTwoDecimals(amount);
     transactionHistory.add(new Transaction("Withdraw", amount));
     if (isFrozen) {
@@ -68,23 +68,23 @@ public class BankAccount {
     System.out.println("Current balance: " + balance);
   }
 
-  double getBalance() {
+  public double getBalance() {
     return balance;
   }
 
-  void freezeAccount() {
+  public void freezeAccount() {
     isFrozen = true;
   }
 
-  void unfreezeAccount() {
+  public void unfreezeAccount() {
     isFrozen = false;
   }
 
-  boolean isFrozen() {
+  public boolean isFrozen() {
     return isFrozen;
   }
 
-  List<Transaction> getTransactionHistory() {
+  public List<Transaction> getTransactionHistory() {
     return transactionHistory;
   }
 }

@@ -4,14 +4,26 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Transaction {
-    String type;
-    double amount;
-    LocalDateTime timestamp;
+    private String type;
+    private double amount;
+    private LocalDateTime timestamp;
 
-    Transaction(String type, double amount) {
+    public Transaction(String type, double amount) {
         this.type = type;
         this.amount = amount;
         this.timestamp = LocalDateTime.now();
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 
     @Override

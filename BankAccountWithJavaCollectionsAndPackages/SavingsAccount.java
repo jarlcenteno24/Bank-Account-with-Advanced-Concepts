@@ -2,7 +2,7 @@ package BankAccountWithOOP;
 
 public class SavingsAccount extends BankAccount {
 
-  SavingsAccount(String ownerName) {
+  public SavingsAccount(String ownerName) {
     super(ownerName);
   }
 
