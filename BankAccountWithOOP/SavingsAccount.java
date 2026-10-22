@@ -1,8 +1,8 @@
 package BankAccountWithOOP;
 
-public class SavingsAccount extends BankAccount {
+public class SavingsAccount {
 
-  String ownerName;
+  private String ownerName;
   SavingsAccount(String ownerName) {
     this.ownerName = ownerName;
   }
