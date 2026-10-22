@@ -11,14 +11,14 @@ public class Bank {
   private int nextId = 1;
 
   public void addAccount(BankAccount account) {
-    // LIMIT CHECK: reject if the bank is already full
+
     if (accounts.size() >= MAX_ACCOUNTS) {
       System.out.println("Limit reached! Cannot add more than "
           + MAX_ACCOUNTS + " accounts.");
-      return; // exits without calling accounts.put(...)
+      return; 
     }
 
-    int id = nextId++;                  // auto-generate the id (1, 2, 3, ...)
+    int id = nextId++;   
     accounts.put(id, account);
     System.out.println("Added account with id " + id + " ("
         + accounts.size() + "/" + MAX_ACCOUNTS + " used)");
